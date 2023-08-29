@@ -2,6 +2,7 @@
 import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Response } from 'express';
+import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { IAuthRequest } from '../@types/authRequest';
 
@@ -11,6 +12,7 @@ export class AuthController {
 
   @Get('github')
   @UseGuards(AuthGuard('github'))
+  @ApiTags('Auth')
   async githubLogin() {
     // The user will be redirected to GitHub for authentication
   }
