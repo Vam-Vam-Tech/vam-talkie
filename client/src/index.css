@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    background-image: url("background.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: black;
+.vam-talkie-container {
+	background-image: url("background.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: black;
 }

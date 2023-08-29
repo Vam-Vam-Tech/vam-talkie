@@ -3,7 +3,10 @@ import Guest from "./Guest"
 const Routes = () => {
 
     return (
-        <Guest />
+        <div className="vam-talkie-container">
+            <Guest />
+        </div>
+
     )
 }
 
