@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .vam-talkie-container {
-	background-image: url("background.jpeg");
+	background-image: url("/background.jpeg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
