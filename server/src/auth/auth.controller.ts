@@ -1,5 +1,12 @@
 // auth.controller.ts
-import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Req,
+  Res,
+  UseGuards,
+  HttpStatus,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Response } from 'express';
 import { ApiTags } from '@nestjs/swagger';
@@ -20,8 +27,24 @@ export class AuthController {
   @Get('github/callback')
   @UseGuards(AuthGuard('github'))
   async githubLoginCallback(@Req() req: IAuthRequest, @Res() res: Response) {
+    console.log(req.user);
     const token = await this.authService.login(req.user);
     // Redirect to the frontend with the JWT token (for demonstration purposes)
     res.redirect(`${process.env.FRONTEND_URL}/login?token=${token}`);
+  }
+
+  @Get('/facebook')
+  @UseGuards(AuthGuard('facebook'))
+  async facebookLogin(): Promise<any> {
+    return HttpStatus.OK;
+  }
+
+  @Get('/facebook/callback')
+  @UseGuards(AuthGuard('facebook'))
+  async facebookLoginRedirect(@Req() req: Request): Promise<any> {
+    return {
+      statusCode: HttpStatus.OK,
+      data: req,
+    };
   }
 }
